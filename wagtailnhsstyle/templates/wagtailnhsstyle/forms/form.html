@@ -1,0 +1,17 @@
+{% for field in form %}
+
+  <div class="nhsuk-form-group">
+    {% include 'wagtailnhsstyle/forms/label.html' %}
+    {% include 'wagtailnhsstyle/forms/hint.html' %}
+    {% for error in field.errors %}
+      <span class="nhsuk-error-message">
+        {{ error }}
+      </span>
+    {% endfor %}
+
+    {{ field }}
+  </div>
+
+{% endfor %}
+
+{% include 'wagtailnhsstyle/forms/submit.html' %}

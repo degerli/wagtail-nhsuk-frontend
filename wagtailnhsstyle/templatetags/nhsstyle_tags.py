@@ -1,4 +1,11 @@
 from django import template
+from django.forms.widgets import (
+    Input,
+    RadioSelect,
+    Textarea,
+    CheckboxInput,
+    CheckboxSelectMultiple
+)
 
 register = template.Library()
 
@@ -19,4 +26,30 @@ def breadcrumbs(context):
 
     return {
         'breadcrumb_pages': breadcrumb_pages,
+    }
+
+@register.inclusion_tag('wagtailnhsstyle/forms/form.html')
+def form(django_form):
+    """
+    Takes a django `form` and applies custom styling to it's widgets
+    """
+
+    # monkey-patch input widgets to use our custom templates
+    for field in django_form:
+        widget = field.field.widget
+        if isinstance(widget, RadioSelect):
+            widget.template_name = 'wagtailnhsstyle/forms/radio.html'
+            widget.option_template_name = 'wagtailnhsstyle/forms/radio_option.html'
+        elif isinstance(widget, CheckboxSelectMultiple):
+            widget.template_name = 'wagtailnhsstyle/forms/checkboxes.html'
+            widget.option_template_name = 'wagtailnhsstyle/forms/checkbox_option.html'
+        elif isinstance(widget, CheckboxInput):
+            widget.template_name = 'wagtailnhsstyle/forms/checkbox.html'
+        elif isinstance(widget, Textarea):
+            widget.attrs['class'] = 'nhsuk-textarea'
+        elif isinstance(widget, Input):
+            widget.attrs['class'] = 'nhsuk-input'
+
+    return {
+        'form': django_form,
     }

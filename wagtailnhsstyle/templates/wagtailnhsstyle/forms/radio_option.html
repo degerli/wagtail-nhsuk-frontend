@@ -1,0 +1,6 @@
+{% with id=widget.attrs.id %}
+  <input class="nhsuk-radios__input" id="{{ id }}" name="{{ widget.name }}" type="radio" value="{{ widget.value }}" {% if widget.selected %}checked{% endif %}>
+  <label class="nhsuk-label nhsuk-radios__label" for="{{ id }}">
+    {{ widget.label }}
+  </label>
+{% endwith %}

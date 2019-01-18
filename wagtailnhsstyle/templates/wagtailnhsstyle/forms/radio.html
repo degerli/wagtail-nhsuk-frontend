@@ -1,0 +1,9 @@
+<div class="nhsuk-radios">
+  {% for group, options, index in widget.optgroups %}
+    {% for option in options %}
+      <div class="nhsuk-radios__item">
+        {% include option.template_name with widget=option %}
+      </div>
+    {% endfor %}
+  {% endfor %}
+</div>

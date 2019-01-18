@@ -1,0 +1,6 @@
+{% with id=widget.attrs.id %}
+  <input class="nhsuk-checkboxes__input" id="{{ id }}" name="{{ widget.name }}" type="checkbox" value="{{ widget.value }}" {% if widget.selected %}checked{% endif %}>
+  <label class="nhsuk-label nhsuk-checkboxes__label" for="{{ id }}">
+    {{ widget.label }}
+  </label>
+{% endwith %}
