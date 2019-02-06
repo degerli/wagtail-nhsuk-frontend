@@ -1,9 +1,9 @@
 from wagtail.core.blocks import (
-    CharBlock,
-    ChoiceBlock,
-    RichTextBlock,
-    StructBlock,
-    URLBlock,
+        CharBlock,
+        ChoiceBlock,
+        RichTextBlock,
+        StructBlock,
+        URLBlock,
 )
 
 
@@ -43,3 +43,9 @@ class WarningCalloutBlock(RichTextBlock):
 
     class Meta:
         template = 'wagtailnhsstyle/warning_callout.html'
+
+class InsetText(RichTextBlock):
+
+    class Meta:
+        template = 'wagtailnhsstyle/inset_text.html'
+
