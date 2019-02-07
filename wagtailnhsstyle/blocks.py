@@ -44,7 +44,9 @@ class WarningCalloutBlock(RichTextBlock):
     class Meta:
         template = 'wagtailnhsstyle/warning_callout.html'
 
-class InsetText(RichTextBlock):
+class InsetText(StructBlock):
+
+    body = RichTextBlock(features=['h2', 'h3', 'bold', 'italic', 'link'])
 
     class Meta:
         template = 'wagtailnhsstyle/inset_text.html'
